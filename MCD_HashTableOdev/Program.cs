@@ -21,6 +21,45 @@ namespace MCD_HashTableOdev
              * 
              */
             //DictionaryEntry
+            Hashtable sozlukVeriTabani = new Hashtable();
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Eklemek istediğiniz sözlük değerini yazınız.");
+                Console.WriteLine("EN :");
+                string eng = Console.ReadLine();
+
+                bool kontrol = sozlukVeriTabani.ContainsKey(eng);
+
+                if (kontrol)
+                {
+                    Console.WriteLine("Eklemek istediğiniz değer {0} sözlük içerisinde bulunmaktadır. {1} değerin türkçe karşılığıdır.", eng, sozlukVeriTabani[eng].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("{0} ingilizce değerin türkçe karşılığını yazınız", eng);
+                    string tr = Console.ReadLine();
+                    sozlukVeriTabani.Add(eng, tr);
+                    Console.WriteLine("Değer ekleme işlemi başarılı.");
+                }
+
+                Console.WriteLine("Yeni değer eklemek istiyor musunuz? (E/H) ");
+            } while (Console.ReadLine().ToUpper() != "H");
+
+            //1.Yöntem :
+            foreach (var item in sozlukVeriTabani.Keys)
+            {
+                Console.WriteLine("ENG : {0} = TR : {1}", item, sozlukVeriTabani[item]);
+            }
+
+            //2.Yöntem
+            foreach (DictionaryEntry item in sozlukVeriTabani)
+            {
+                Console.WriteLine("ENG : {0} = TR : {1}", item.Key, item.Value);
+            }
+
+            Console.ReadLine();
         }
     }
 }
